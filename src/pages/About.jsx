@@ -7,7 +7,6 @@ const About = () => {
       <p>Our Competitive Programming and Algorithmic Research Lab is dedicated to advancing the field of computer science through innovative algorithm design and competitive programming excellence.</p>
       <p>We focus on developing efficient algorithms, solving complex computational problems, and training the next generation of competitive programmers.</p>
       
-      {/* Contact section */}
       <div className="contact-section">
         <h2>Contact Information</h2>
         <p>Get in touch with our lab for collaboration opportunities, training programs, or research inquiries.</p>

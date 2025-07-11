@@ -17,21 +17,18 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        {/* Logo */}
         <div className="navbar-logo">
           <Link to="/">
             CP & Algorithmic Lab
           </Link>
         </div>
 
-        {/* Mobile menu button */}
         <div className="mobile-menu-icon" onClick={toggleMenu}>
           <span className={isOpen ? 'bar open' : 'bar'}></span>
           <span className={isOpen ? 'bar open' : 'bar'}></span>
           <span className={isOpen ? 'bar open' : 'bar'}></span>
         </div>
 
-        {/* Navigation menu */}
         <ul className={isOpen ? 'nav-menu active' : 'nav-menu'}>
           <li className="nav-item">
             <Link 
