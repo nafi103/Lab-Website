@@ -1,0 +1,6 @@
+export { default as Home } from './Home'
+export { default as About } from './About'
+export { default as People } from './People'
+export { default as News } from './News'
+export { default as Articles } from './Articles'
+export { default as Achievements } from './Achievements'

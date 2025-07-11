@@ -1,12 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import Home from './pages/Home'
-import About from './pages/About'
-import People from './pages/People'
-import News from './pages/News'
-import Articles from './pages/Articles'
-import Achievements from './pages/Achievements'
+import { Home, About, People, News, Articles, Achievements } from './pages'
 import './App.css'
 
 function App() {
