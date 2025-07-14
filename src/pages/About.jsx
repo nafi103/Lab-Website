@@ -8,7 +8,7 @@ const About = () => {
       <p>We focus on developing efficient algorithms, solving complex computational problems, and training the next generation of competitive programmers.</p>
       
       <div className="contact-section">
-        <h2>Contact Information</h2>
+        <h1>Contact Information</h1>
         <p>Get in touch with our lab for collaboration opportunities, training programs, or research inquiries.</p>
         <p>We welcome aspiring competitive programmers and researchers to join our community.</p>
       </div>
