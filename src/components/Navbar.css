@@ -54,17 +54,28 @@
 }
 
 .navbar-logo a {
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
-  letter-spacing: -0.02em;
-  text-shadow: 0 0 15px rgba(14, 165, 233, 0.5);
-  background: linear-gradient(45deg, var(--primary), var(--secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  white-space: nowrap;
+  transition: transform 0.3s ease;
+}
+
+.logo-image {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(139, 92, 246, 0.1));
+  padding: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.2);
+  border: 2px solid rgba(14, 165, 233, 0.3);
+}
+
+.navbar-logo a:hover .logo-image {
+  transform: scale(1.1);
+  box-shadow: 0 6px 25px rgba(14, 165, 233, 0.4);
+  border-color: rgba(14, 165, 233, 0.6);
 }
 
 .nav-menu {
