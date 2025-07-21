@@ -4,8 +4,8 @@ const News = () => {
   return (
     <div className="page-content">
       <h1>Latest News</h1>
-      <p>Stay updated with the latest developments in competitive programming and our lab's achievements.</p>
-      <p>Find information about upcoming contests, recent victories, training workshops, and algorithmic research breakthroughs.</p>
+      <p>Stay updated with the latest developments and achievements from our research laboratory.</p>
+      <p>Find information about recent publications, upcoming conferences, research milestones, and academic events.</p>
     </div>
   );
 };
