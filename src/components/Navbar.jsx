@@ -42,20 +42,11 @@ const Navbar = () => {
           </li>
           <li className="nav-item">
             <Link 
-              to="/articles" 
-              className={`nav-link ${isActive('/articles') ? 'nav-link-active' : ''}`} 
+              to="/publications" 
+              className={`nav-link ${isActive('/publications') ? 'nav-link-active' : ''}`} 
               onClick={toggleMenu}
             >
-              Articles
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link 
-              to="/achievements" 
-              className={`nav-link ${isActive('/achievements') ? 'nav-link-active' : ''}`} 
-              onClick={toggleMenu}
-            >
-              Achievements
+              Publications
             </Link>
           </li>
           <li className="nav-item">
