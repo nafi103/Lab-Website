@@ -9,17 +9,49 @@ function App() {
     <Router>
       <div className="App">
         <Navbar />
-        <main className="main-content">
-          <div className="container">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/news" element={<News />} />
-              <Route path="/publications" element={<Publications />} />
-              <Route path="/people" element={<People />} />
-              <Route path="/about" element={<About />} />
-            </Routes>
-          </div>
-        </main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route 
+            path="/news" 
+            element={
+              <main className="main-content">
+                <div className="container">
+                  <News />
+                </div>
+              </main>
+            } 
+          />
+          <Route 
+            path="/publications" 
+            element={
+              <main className="main-content">
+                <div className="container">
+                  <Publications />
+                </div>
+              </main>
+            } 
+          />
+          <Route 
+            path="/people" 
+            element={
+              <main className="main-content">
+                <div className="container">
+                  <People />
+                </div>
+              </main>
+            } 
+          />
+          <Route 
+            path="/about" 
+            element={
+              <main className="main-content">
+                <div className="container">
+                  <About />
+                </div>
+              </main>
+            } 
+          />
+        </Routes>
       </div>
     </Router>
   )
