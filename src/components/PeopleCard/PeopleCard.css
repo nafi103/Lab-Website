@@ -1,0 +1,195 @@
+/* PeopleCard.css - Glassmorphism Design */
+.people-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  margin-bottom: 2rem;
+  max-width: 300px;
+  width: 100%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  position: relative;
+}
+
+.people-card:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
+}
+
+.people-card-image {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.people-card-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.people-card:hover .people-card-image::before {
+  opacity: 1;
+}
+
+.people-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.people-card:hover .people-card-image img {
+  transform: scale(1.05);
+}
+
+.people-card-content {
+  padding: 1.25rem;
+  text-align: center;
+  position: relative;
+}
+
+.people-card-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.people-card-position {
+  font-size: 0.9rem;
+  color: #64b5f6;
+  font-weight: 500;
+  margin: 0 0 1rem 0;
+  opacity: 0.9;
+}
+
+.contact-item {
+  margin-bottom: 1rem;
+}
+
+.contact-link {
+  font-size: 0.8rem;
+  color: #81c784;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  background: rgba(129, 199, 132, 0.1);
+  border: 1px solid rgba(129, 199, 132, 0.2);
+}
+
+.contact-link:hover {
+  color: #a5d6a7;
+  background: rgba(129, 199, 132, 0.2);
+  transform: translateY(-1px);
+}
+
+.expertise-section {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.expertise-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+}
+
+.expertise-tag {
+  background: rgba(100, 181, 246, 0.15);
+  color: #bbdefb;
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  border: 1px solid rgba(100, 181, 246, 0.25);
+  backdrop-filter: blur(10px);
+  transition: all 0.2s ease;
+}
+
+.expertise-tag:hover {
+  background: rgba(100, 181, 246, 0.25);
+  transform: translateY(-1px);
+}
+
+.expertise-tag.more {
+  background: rgba(255, 255, 255, 0.1);
+  color: #e0e0e0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.click-hint {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.people-card:hover .click-hint {
+  opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .people-card {
+    max-width: 280px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .people-card-content {
+    padding: 1rem;
+  }
+  
+  .people-card-image {
+    height: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .people-card {
+    max-width: 100%;
+  }
+  
+  .people-card-name {
+    font-size: 1rem;
+  }
+  
+  .people-card-position {
+    font-size: 0.85rem;
+  }
+  
+  .expertise-tags {
+    gap: 0.3rem;
+  }
+  
+  .expertise-tag {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
