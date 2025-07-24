@@ -4,6 +4,8 @@ import Navbar from './components/Navbar/Navbar'
 import PersonDetail from './components/PersonDetail/PersonDetail'
 import { Home, About, People, News, Publications } from './pages'
 import './App.css'
+import './styles/global.css'
+import './styles/background.css'
 
 function App() {
   return (
