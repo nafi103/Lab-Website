@@ -1,7 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './NewsCard.css';
 
-const NewsCard = ({ news, onClick }) => {
+const NewsCard = ({ news }) => {
+  const navigate = useNavigate();
+  
   const formatDate = (dateString) => {
     const options = { 
       year: 'numeric', 
@@ -11,8 +14,12 @@ const NewsCard = ({ news, onClick }) => {
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
+  const handleClick = () => {
+    navigate(`/news/${news._id}`);
+  };
+
   return (
-    <div className="news-card" onClick={() => onClick && onClick(news)}>
+    <div className="news-card" onClick={handleClick}>
       {news.image && (
         <div className="news-card-image">
           <img src={news.image} alt={news.title} />
@@ -53,10 +60,6 @@ const NewsCard = ({ news, onClick }) => {
               ))}
             </div>
           )}
-          
-          <div className="read-more-hint">
-            <span>Click to read full article</span>
-          </div>
         </div>
       </div>
     </div>

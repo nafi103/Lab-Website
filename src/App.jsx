@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar'
 import PersonDetail from './components/PersonDetail/PersonDetail'
+import NewsDetail from './components/NewsDetail/NewsDetail'
 import { Home, About, People, News, Publications } from './pages'
 import './App.css'
 import './styles/global.css'
@@ -50,6 +51,16 @@ function App() {
               <main className="main-content">
                 <div className="container">
                   <PersonDetail />
+                </div>
+              </main>
+            } 
+          />
+          <Route 
+            path="/news/:id" 
+            element={
+              <main className="main-content">
+                <div className="container">
+                  <NewsDetail />
                 </div>
               </main>
             } 

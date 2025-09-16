@@ -2,6 +2,7 @@
 
 .home-page {
   width: 100%;
+  padding: 6rem 0 2rem 0; /* Universal gap below navbar */
 }
 
 .intro-section {
@@ -39,5 +40,18 @@
   
   .intro-section .container {
     padding: 0 1rem;
+  }
+}
+
+/* Responsive spacing for Home page */
+@media (max-width: 768px) {
+  .home-page {
+    padding-top: 5.5rem; /* Match global responsive spacing */
+  }
+}
+
+@media (max-width: 480px) {
+  .home-page {
+    padding-top: 5rem; /* Match global responsive spacing */
   }
 }

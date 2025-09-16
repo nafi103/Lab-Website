@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import NewsCard from '../../components/NewsCard';
-import NewsModal from '../../components/NewsModal';
 import LoadingScreen from '../../components/LoadingScreen';
 import './News.css';
 
@@ -10,8 +9,6 @@ const News = () => {
   const [error, setError] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [categories, setCategories] = useState([]);
-  const [selectedNews, setSelectedNews] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
   const [isInitialLoad, setIsInitialLoad] = useState(true);
 
@@ -41,7 +38,20 @@ const News = () => {
         throw new Error('Failed to fetch news');
       }
       const data = await response.json();
-      setNews(data);
+      
+      // Sort articles: Featured first, then by date (latest to oldest)
+      const sortedNews = data.sort((a, b) => {
+        // If one is featured and the other isn't, featured comes first
+        if (a.featured && !b.featured) return -1;
+        if (!a.featured && b.featured) return 1;
+        
+        // If both are featured or both are not featured, sort by date (latest first)
+        const dateA = new Date(a.publishDate);
+        const dateB = new Date(b.publishDate);
+        return dateB - dateA; // Latest first (descending order)
+      });
+      
+      setNews(sortedNews);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -63,16 +73,6 @@ const News = () => {
     } catch (err) {
       console.error('Failed to fetch categories:', err);
     }
-  };
-
-  const handleNewsClick = (newsItem) => {
-    setSelectedNews(newsItem);
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setSelectedNews(null);
   };
 
   if (loading) {
@@ -144,19 +144,12 @@ const News = () => {
               {news.map((newsItem) => (
                 <NewsCard 
                   key={newsItem._id} 
-                  news={newsItem} 
-                  onClick={handleNewsClick}
+                  news={newsItem}
                 />
               ))}
             </div>
           )}
         </div>
-
-        <NewsModal 
-          news={selectedNews}
-          isOpen={isModalOpen}
-          onClose={handleCloseModal}
-        />
       </div>
     </div>
   );

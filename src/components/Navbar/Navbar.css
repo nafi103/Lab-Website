@@ -1,16 +1,3 @@
-.navbar * {
-  outline: none !important;
-  border: none !important;
-}
-
-.navbar *:focus,
-.navbar *:active,
-.navbar *:focus-visible {
-  outline: none !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
 .navbar {
   position: fixed;
   top: 20px;
