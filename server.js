@@ -77,6 +77,54 @@ const personSchema = new mongoose.Schema({
 
 const Person = mongoose.model('Person', personSchema);
 
+// News Schema
+const newsSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true
+  },
+  content: {
+    type: String,
+    required: true
+  },
+  excerpt: {
+    type: String,
+    required: false
+  },
+  category: {
+    type: String,
+    required: true,
+    enum: ['Research', 'Publication', 'Event', 'Award', 'Conference', 'Collaboration', 'General']
+  },
+  author: {
+    type: String,
+    required: true
+  },
+  image: {
+    type: String,
+    required: false
+  },
+  tags: [{
+    type: String
+  }],
+  publishDate: {
+    type: Date,
+    default: Date.now
+  },
+  featured: {
+    type: Boolean,
+    default: false
+  },
+  readTime: {
+    type: Number, // in minutes
+    required: false
+  }
+}, {
+  timestamps: true
+});
+
+const News = mongoose.model('News', newsSchema);
+
 // Routes
 
 // Get all people
@@ -138,6 +186,99 @@ app.delete('/api/people/:id', async (req, res) => {
       return res.status(404).json({ message: 'Person not found' });
     }
     res.json({ message: 'Person deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// News Routes
+
+// Get all news
+app.get('/api/news', async (req, res) => {
+  try {
+    const { category, featured, limit } = req.query;
+    let query = {};
+    
+    if (category && category !== 'all') {
+      query.category = category;
+    }
+    
+    if (featured === 'true') {
+      query.featured = true;
+    }
+    
+    let newsQuery = News.find(query).sort({ publishDate: -1 });
+    
+    if (limit) {
+      newsQuery = newsQuery.limit(parseInt(limit));
+    }
+    
+    const news = await newsQuery;
+    res.json(news);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// Get single news article
+app.get('/api/news/:id', async (req, res) => {
+  try {
+    const news = await News.findById(req.params.id);
+    if (!news) {
+      return res.status(404).json({ message: 'News article not found' });
+    }
+    res.json(news);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// Create new news article
+app.post('/api/news', async (req, res) => {
+  try {
+    const news = new News(req.body);
+    const savedNews = await news.save();
+    res.status(201).json(savedNews);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
+// Update news article
+app.put('/api/news/:id', async (req, res) => {
+  try {
+    const news = await News.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true, runValidators: true }
+    );
+    if (!news) {
+      return res.status(404).json({ message: 'News article not found' });
+    }
+    res.json(news);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
+// Delete news article
+app.delete('/api/news/:id', async (req, res) => {
+  try {
+    const news = await News.findByIdAndDelete(req.params.id);
+    if (!news) {
+      return res.status(404).json({ message: 'News article not found' });
+    }
+    res.json({ message: 'News article deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// Get news categories
+app.get('/api/news/categories/all', async (req, res) => {
+  try {
+    const categories = await News.distinct('category');
+    res.json(categories);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

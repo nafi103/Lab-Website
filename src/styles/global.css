@@ -46,7 +46,7 @@ p {
 
 /* Global Layout Classes */
 .page-content {
-  padding-top: 120px;
+  padding: 6rem 0 2rem 0;
   width: 100%;
   text-align: center;
   position: relative;
@@ -166,5 +166,18 @@ p {
   
   .main-content {
     padding: 0;
+  }
+}
+
+/* Universal Page Spacing - Responsive */
+@media (max-width: 768px) {
+  .page-content {
+    padding: 5.5rem 0 2rem 0; /* Slightly less on tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .page-content {
+    padding: 5rem 0 1.5rem 0; /* Even less on mobile */
   }
 }
