@@ -32,7 +32,7 @@ const People = () => {
 
   if (loading) {
     return (
-      <div className='page-content'>
+      <div className='people-page'>
         <div className="loading-container">
           <div className="loading-spinner"></div>
           <p>Loading our amazing team...</p>
@@ -43,7 +43,7 @@ const People = () => {
 
   if (error) {
     return (
-      <div className='page-content'>
+      <div className='people-page'>
         <div className="error-container">
           <h2>Oops! Something went wrong</h2>
           <p>{error}</p>
@@ -60,7 +60,7 @@ const People = () => {
   }
 
   return (
-    <div className='page-content'>
+    <div className='people-page'>
       <div className="people-header">
         <h1>Our Team</h1>
         <p className="people-subtitle">

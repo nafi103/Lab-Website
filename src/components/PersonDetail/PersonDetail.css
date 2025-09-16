@@ -170,6 +170,7 @@
   -webkit-text-fill-color: transparent;
   letter-spacing: -0.02em;
   line-height: 1.2;
+  align-self: center;
 }
 
 .person-detail-position {
@@ -183,8 +184,8 @@
 
 .person-contact-info {
   display: flex;
-  flex-direction: column;
   gap: 1.25rem;
+  align-self: center;
 }
 
 .contact-detail {
@@ -319,7 +320,6 @@
   margin: 0;
   opacity: 0.95;
   text-align: left;
-  max-width: none;
 }
 
 .person-education {
