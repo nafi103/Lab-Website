@@ -2,11 +2,40 @@
 
 .publications-page {
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 2rem 2rem;
+}
+
+.publications-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: fadeInUp 0.8s ease-out 0.2s forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.publications-header h1 {
+  color: var(--primary);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.publications-header p {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+  max-width: 600px;
+  margin: 0 auto 1rem auto;
+  line-height: 1.6;
 }
 
 .publications-content {
   max-width: 1000px;
   margin: 0 auto;
+  animation: fadeInUp 0.8s ease-out 0.4s forwards;
+  opacity: 0;
+  transform: translateY(20px);
 }
 
 .publication-item {
@@ -17,11 +46,36 @@
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+  transform: translateY(30px);
 }
+
+.publication-item:nth-child(1) { animation-delay: 0.6s; }
+.publication-item:nth-child(2) { animation-delay: 0.7s; }
+.publication-item:nth-child(3) { animation-delay: 0.8s; }
+.publication-item:nth-child(4) { animation-delay: 0.9s; }
+.publication-item:nth-child(5) { animation-delay: 1.0s; }
+.publication-item:nth-child(6) { animation-delay: 1.1s; }
 
 .publication-item:hover {
   background: rgba(255, 255, 255, 0.08);
   transform: translateY(-2px);
+}
+
+.publication-type {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .publication-title {
@@ -30,13 +84,22 @@
   font-weight: 600;
   margin-bottom: 0.5rem;
   text-align: left;
+  line-height: 1.4;
 }
 
 .publication-authors {
   color: var(--text-secondary);
   font-size: 1rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   text-align: left;
+  line-height: 1.5;
+}
+
+.publication-details {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .publication-journal {

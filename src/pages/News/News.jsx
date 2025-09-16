@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import NewsCard from '../../components/NewsCard';
 import NewsModal from '../../components/NewsModal';
+import LoadingScreen from '../../components/LoadingScreen';
 import './News.css';
 
 const News = () => {
@@ -11,15 +12,28 @@ const News = () => {
   const [categories, setCategories] = useState([]);
   const [selectedNews, setSelectedNews] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isUpdating, setIsUpdating] = useState(false);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
 
   useEffect(() => {
-    fetchNews();
-    fetchCategories();
+    if (isInitialLoad) {
+      fetchNews();
+      fetchCategories();
+      setIsInitialLoad(false);
+    } else {
+      // For category changes, show smooth transition
+      setIsUpdating(true);
+      setTimeout(() => {
+        fetchNews();
+      }, 150); // Small delay for smooth transition
+    }
   }, [selectedCategory]);
 
   const fetchNews = async () => {
     try {
-      setLoading(true);
+      if (isInitialLoad) {
+        setLoading(true);
+      }
       const response = await fetch(
         `http://localhost:5000/api/news${selectedCategory !== 'all' ? `?category=${selectedCategory}` : ''}`
       );
@@ -31,7 +45,11 @@ const News = () => {
     } catch (err) {
       setError(err.message);
     } finally {
-      setLoading(false);
+      if (isInitialLoad) {
+        setLoading(false);
+      } else {
+        setIsUpdating(false);
+      }
     }
   };
 
@@ -59,15 +77,10 @@ const News = () => {
 
   if (loading) {
     return (
-      <div className="page-content">
-        <div className="news-page">
-          <div className="news-header">
-            <h1>Latest News</h1>
-            <p>Stay updated with the latest developments and achievements from our research laboratory.</p>
-          </div>
-          <div className="loading-message">Loading news...</div>
-        </div>
-      </div>
+      <LoadingScreen 
+        message="Loading Latest News" 
+        subMessage="Fetching the most recent updates and developments from our laboratory..."
+      />
     );
   }
 
@@ -112,7 +125,7 @@ const News = () => {
           </div>
         </div>
 
-        <div className="news-content">
+        <div className={`news-content ${isUpdating ? 'updating' : 'updated'}`}>
           {news.length === 0 ? (
             <div className="no-news">
               <h3>No news articles found</h3>

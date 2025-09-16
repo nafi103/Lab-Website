@@ -15,6 +15,9 @@
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
+  animation: fadeInUp 0.8s ease-out 0.2s forwards;
+  opacity: 0;
+  transform: translateY(20px);
 }
 
 .hero-content h1 {
@@ -139,6 +142,9 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+  animation: fadeInUp 0.8s ease-out 0.4s forwards;
+  opacity: 0;
+  transform: translateY(20px);
 }
 
 .about-section {
@@ -153,6 +159,9 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .about-section::before {
@@ -293,6 +302,9 @@
   box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .contact-section::before {
@@ -482,3 +494,10 @@
     height: 200px;
   }
 }
+
+/* Section animation delays */
+.about-section:nth-of-type(1) { animation-delay: 0.6s; }
+.about-section:nth-of-type(2) { animation-delay: 0.8s; }
+.about-section:nth-of-type(3) { animation-delay: 1.0s; }
+.about-section:nth-of-type(4) { animation-delay: 1.2s; }
+.contact-section { animation-delay: 1.4s; }

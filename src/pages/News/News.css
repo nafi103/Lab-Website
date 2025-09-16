@@ -10,6 +10,9 @@
 .news-header {
   text-align: center;
   margin-bottom: 3rem;
+  animation: fadeInUp 0.8s ease-out 0.2s forwards;
+  opacity: 0;
+  transform: translateY(20px);
 }
 
 .news-header h1 {
@@ -34,6 +37,9 @@
   backdrop-filter: blur(20px);
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: fadeInUp 0.8s ease-out 0.4s forwards;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .category-filters {
@@ -81,6 +87,19 @@
 
 .news-content {
   min-height: 400px;
+  animation: fadeInUp 0.8s ease-out 0.6s forwards;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.news-content.updating {
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.news-content.updated {
+  opacity: 1;
+  transition: opacity 0.3s ease;
 }
 
 .news-grid {
@@ -90,18 +109,13 @@
   align-items: start;
 }
 
-.loading-message, .error-message, .no-news {
+.error-message, .no-news {
   text-align: center;
   padding: 3rem 2rem;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(20px);
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.loading-message {
-  color: var(--text-secondary);
-  font-size: 1.125rem;
 }
 
 .error-message {

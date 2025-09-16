@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PeopleCard from '../../components/PeopleCard/PeopleCard';
+import LoadingScreen from '../../components/LoadingScreen';
 import './People.css';
 
 const People = () => {
@@ -32,12 +33,10 @@ const People = () => {
 
   if (loading) {
     return (
-      <div className='people-page'>
-        <div className="loading-container">
-          <div className="loading-spinner"></div>
-          <p>Loading our amazing team...</p>
-        </div>
-      </div>
+      <LoadingScreen 
+        message="Loading Our Amazing Team" 
+        subMessage="Preparing to introduce you to the brilliant minds driving innovation in our laboratory..."
+      />
     );
   }
 
