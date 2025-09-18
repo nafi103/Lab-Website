@@ -47,6 +47,14 @@ const About = () => {
               <h3>Systems Biology</h3>
               <p>Understanding biological systems through integrative approaches and modeling.</p>
             </div>
+            <div className="research-item">
+              <h3>Quantum Computing</h3>
+              <p>Exploring quantum algorithms and their applications in scientific computing and optimization.</p>
+            </div>
+            <div className="research-item">   
+              <h3>Synthetic Biology</h3>
+              <p>Engineering biological systems to design and construct new biological parts and devices.</p>
+            </div>
           </div>
         </div>
 
@@ -103,6 +111,18 @@ const About = () => {
               <p>Information about internships,<br />
                  graduate positions, and<br />
                  research opportunities</p>
+            </div>
+            <div className="contact-item">
+              <h3>Media & Press</h3>
+              <p>Email: press@university.edu<br />
+                 Phone: (555) 123-4568<br />
+                 For media inquiries and interviews</p>
+            </div>
+            <div className="contact-item">
+              <h3>Technology Transfer</h3>
+              <p>Email: tech-transfer@university.edu<br />
+                 Phone: (555) 123-4569<br />
+                 For licensing and commercialization</p>
             </div>
           </div>
           <p className="contact-note">
