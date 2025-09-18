@@ -45,6 +45,7 @@
   text-decoration: none;
   display: inline-block;
   white-space: nowrap;
+  align-self: center;
 }
 
 .home-people-view-all-btn:hover {
