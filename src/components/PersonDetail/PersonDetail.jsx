@@ -110,21 +110,21 @@ const PersonDetail = () => {
           <div className="person-detail-body">
             {person.bio && (
               <div className="detail-section">
-                <h3>About</h3>
+                <h2>About</h2>
                 <p className="person-bio">{person.bio}</p>
               </div>
             )}
             
             {person.education && (
               <div className="detail-section">
-                <h3>Education</h3>
+                <h2>Education</h2>
                 <p className="person-education">{person.education}</p>
               </div>
             )}
             
             {person.expertise && person.expertise.length > 0 && (
               <div className="detail-section">
-                <h3>Areas of Expertise</h3>
+                <h2>Areas of Expertise</h2>
                 <div className="expertise-list">
                   {person.expertise.map((skill, index) => (
                     <span key={index} className="expertise-tag-large">{skill}</span>
@@ -135,7 +135,7 @@ const PersonDetail = () => {
             
             {person.joinDate && (
               <div className="detail-section">
-                <h3>Laboratory Affiliation</h3>
+                <h2>Laboratory Affiliation</h2>
                 <p className="join-date">
                   Joined in {new Date(person.joinDate).toLocaleDateString('en-US', { 
                     year: 'numeric', 
@@ -147,7 +147,7 @@ const PersonDetail = () => {
             
             {person.publications && person.publications.length > 0 && (
               <div className="detail-section">
-                <h3>Recent Publications</h3>
+                <h2>Recent Publications</h2>
                 <div className="publications-list">
                   {person.publications.slice(0, 5).map((pub, index) => (
                     <div key={index} className="publication-item">
@@ -161,7 +161,7 @@ const PersonDetail = () => {
             
             {person.awards && person.awards.length > 0 && (
               <div className="detail-section">
-                <h3>Awards & Recognition</h3>
+                <h2>Awards & Recognition</h2>
                 <div className="awards-list">
                   {person.awards.map((award, index) => (
                     <div key={index} className="award-item">
