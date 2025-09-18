@@ -16,24 +16,7 @@
   max-width: 1200px;
 }
 
-.news-header h1 {
-  font-size: 3.5rem;
-  font-weight: 800;
-  color: #ffffff;
-  margin-bottom: 1.5rem;
-  text-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-  background: linear-gradient(135deg, 
-    #ffffff 0%, 
-    #e3f2fd 30%, 
-    #bbdefb 60%, 
-    #64b5f6 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  line-height: 1.2;
-}
-
-.news-header p {
+.news-subtitle {
   font-size: 1.4rem;
   color: #64b5f6;
   font-weight: 600;

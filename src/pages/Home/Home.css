@@ -9,14 +9,6 @@
   padding: 4rem 0;
 }
 
-.intro-section p {
-  font-size: 1.2rem;
-  line-height: 1.8;
-  max-width: 800px;
-  margin: 0 auto 1rem;
-  color: var(--text-secondary);
-}
-
 @media (max-width: 768px) {
   .home-page {
     padding-top: 5.5rem; /* Match global responsive spacing */
@@ -24,10 +16,6 @@
   
   .intro-section {
     padding: 3rem 0;
-  }
-  
-  .intro-section p {
-    font-size: 1.1rem;
   }
   
   .intro-section .container {

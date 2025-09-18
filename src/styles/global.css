@@ -95,38 +95,6 @@ p {
   }
 }
 
-.page-content h1 {
-  font-size: 3.5rem;
-  font-weight: 800;
-  color: #ffffff;
-  margin-bottom: 1.5rem;
-  text-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-  background: linear-gradient(135deg, 
-    #ffffff 0%, 
-    #e3f2fd 30%, 
-    #bbdefb 60%, 
-    #64b5f6 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  line-height: 1.2;
-  letter-spacing: -0.025em;
-}
-
-.page-content p {
-  margin-bottom: 1rem;
-  line-height: 1.8;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  color: #b8b8d0;
-  text-shadow: 0 0 5px rgba(184, 184, 208, 0.2);
-}
-
-.page-content p:last-child {
-  margin-bottom: 0;
-}
-
 .main-content {
   min-height: calc(100vh - 70px);
   padding: 0;
@@ -164,40 +132,6 @@ p {
 }
 
 /* Global Responsive */
-@media screen and (max-width: 768px) {
-  .main-content {
-    min-height: calc(100vh - 70px);
-    padding: 0;
-  }
-  
-  h1 {
-    font-size: 2.5rem;
-  }
-  
-  p {
-    font-size: 1rem;
-  }
-  
-  .container {
-    padding: 1.5rem 15px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  h1 {
-    font-size: 2rem;
-  }
-  
-  .container {
-    padding: 1rem 10px;
-  }
-  
-  .main-content {
-    padding: 0;
-  }
-}
-
-/* Universal Page Spacing - Responsive */
 @media (max-width: 768px) {
   .page-wrapper {
     padding-top: 5.5rem; /* Slightly less on tablets */
@@ -207,12 +141,25 @@ p {
     padding: 0 0 2rem 0; /* Remove top padding on tablets */
   }
   
+  .main-content {
+    min-height: calc(100vh - 70px);
+    padding: 0;
+  }
+  
   h1 {
     font-size: 2.8rem;
   }
   
   h2 {
     font-size: 2rem;
+  }
+  
+  p {
+    font-size: 1rem;
+  }
+  
+  .container {
+    padding: 1.5rem 15px;
   }
 }
 
@@ -231,5 +178,13 @@ p {
   
   h2 {
     font-size: 1.8rem;
+  }
+  
+  .container {
+    padding: 1rem 10px;
+  }
+  
+  .main-content {
+    padding: 0;
   }
 }
