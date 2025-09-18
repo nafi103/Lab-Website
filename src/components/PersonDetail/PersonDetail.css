@@ -385,9 +385,7 @@
   color: #64b5f6;
   font-size: 1rem;
   margin: 0;
-  font-weight: 500;
-  opacity: 0.9;
-}
+
 
 .awards-list {
   display: flex;
@@ -668,4 +666,5 @@
     gap: 0.5rem;
     text-align: center;
   }
+}
 }

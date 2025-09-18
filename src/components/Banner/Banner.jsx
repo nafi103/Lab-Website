@@ -9,7 +9,7 @@ const Banner = () => {
           <h1 className="banner-title">
             Advancing Scientific Discovery
           </h1>
-          <p>
+          <p className="banner-subtitle">
             Pioneering research and innovation at the forefront of modern science
           </p>
         </div>
