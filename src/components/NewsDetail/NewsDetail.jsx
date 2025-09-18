@@ -125,15 +125,10 @@ const NewsDetail = () => {
               )}
             </div>
 
-            <div className="news-detail-text">
-              {news.content.split('\n').map((paragraph, index) => (
-                paragraph.trim() && (
-                  <p key={index} className="news-paragraph">
-                    {paragraph}
-                  </p>
-                )
-              ))}
-            </div>
+            <div 
+              className="news-detail-text"
+              dangerouslySetInnerHTML={{ __html: news.content }}
+            />
 
             {news.tags && news.tags.length > 0 && (
               <div className="news-detail-tags">

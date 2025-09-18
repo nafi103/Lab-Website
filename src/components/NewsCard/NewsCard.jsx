@@ -14,6 +14,18 @@ const NewsCard = ({ news }) => {
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
+  const getPlainTextExcerpt = (htmlContent, maxLength = 150) => {
+    // Create a temporary div to extract text from HTML
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = htmlContent;
+    const plainText = tempDiv.textContent || tempDiv.innerText || '';
+    
+    // Return truncated plain text
+    return plainText.length > maxLength 
+      ? plainText.substring(0, maxLength) + '...'
+      : plainText;
+  };
+
   const handleClick = () => {
     navigate(`/news/${news._id}`);
   };
@@ -41,7 +53,7 @@ const NewsCard = ({ news }) => {
           <h3 className="news-title">{news.title}</h3>
           
           <p className="news-excerpt">
-            {news.excerpt || news.content.substring(0, 150) + '...'}
+            {news.excerpt || getPlainTextExcerpt(news.content)}
           </p>
         </div>
         
