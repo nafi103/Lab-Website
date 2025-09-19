@@ -22,10 +22,7 @@ const People = () => {
       }
       
       const data = await response.json();
-      
-      // Handle new response format
-      const peopleData = data.data || data; // Support both new and old format
-      setPeople(peopleData);
+      setPeople(data);
     } catch (err) {
       setError(err.message);
       console.error('Error fetching people:', err);

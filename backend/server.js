@@ -77,6 +77,20 @@ app.get('/api/test', (req, res) => {
   res.json({ message: 'Server is working!' });
 });
 
+// Root route for Vercel
+app.get('/', (req, res) => {
+  res.json({
+    message: 'Research Lab API Server',
+    status: 'running',
+    endpoints: {
+      test: '/api/test',
+      news: '/api/news',
+      people: '/api/people',
+      publications: '/api/publications'
+    }
+  });
+});
+
 // Debug: List all routes
 app.get('/api/routes', (req, res) => {
   const routes = [];

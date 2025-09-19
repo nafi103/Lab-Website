@@ -22,11 +22,8 @@ const HomeNewsSection = () => {
       }
       const data = await response.json();
       
-      // Handle new response format
-      const newsData = data.data || data; // Support both new and old format
-      
       // Sort articles: Featured first, then by date (latest to oldest)
-      const sortedNews = newsData.sort((a, b) => {
+      const sortedNews = data.sort((a, b) => {
         if (a.featured && !b.featured) return -1;
         if (!a.featured && b.featured) return 1;
         const dateA = new Date(a.publishDate);
