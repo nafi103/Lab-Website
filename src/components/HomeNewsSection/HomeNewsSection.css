@@ -1,5 +1,7 @@
 /* Home News Section */
 .home-news-section {
+  max-width: 1250px;
+  margin: 0 auto;
   padding: 0.5rem 0 2rem 0;
   opacity: 0;
   transform: translateY(30px);
@@ -14,7 +16,7 @@
 }
 
 .home-news-container {
-  max-width: 1200px;
+  max-width: 1250px;
   margin: 0 auto;
   padding: 0 2rem;
 }

@@ -1,16 +1,18 @@
 /* HomePeopleSection Component Styles */
 
 .home-people-section {
-  width: 100%;
-  padding: 4rem 2rem;
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 4rem 0;
   background: transparent;
   overflow: hidden;
 }
 
 .home-people-container {
-  max-width: 1200px;
+  max-width: 1250px;
   margin: 0 auto;
   padding: 0 2rem;
+  width: 100%;
 }
 
 /* Header Styles */

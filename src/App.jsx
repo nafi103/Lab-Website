@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar'
+import Footer from './components/Footer/Footer'
 import PersonDetail from './components/PersonDetail/PersonDetail'
 import NewsDetail from './components/NewsDetail/NewsDetail'
 import { Home, About, People, News, Publications } from './pages'
@@ -76,6 +77,7 @@ function App() {
             } 
           />
         </Routes>
+        <Footer />
       </div>
     </Router>
   )

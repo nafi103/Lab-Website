@@ -10,6 +10,8 @@
   color: #e0e0e0;
   width: 100%;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   background: 
     linear-gradient(135deg, 
       rgba(14, 165, 233, 0.12) 0%,
@@ -40,4 +42,9 @@
   background-size: 100% 100%;
   pointer-events: none;
   z-index: -4;
+}
+
+/* Main content should grow to push footer to bottom */
+.main-content {
+  flex: 1;
 }

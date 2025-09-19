@@ -1,6 +1,7 @@
 import React from 'react';
 import Banner from '../../components/Banner/Banner';
 import HomeNewsSection from '../../components/HomeNewsSection';
+import HomePublicationSection from '../../components/HomePublicationSection';
 import HomePeopleSection from '../../components/HomePeopleSection';
 import './Home.css';
 
@@ -9,6 +10,7 @@ const Home = () => {
     <div className="page-content">
       <Banner />
       <HomeNewsSection />
+      <HomePublicationSection />
       <HomePeopleSection />
     </div>
   );
