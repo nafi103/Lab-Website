@@ -20,9 +20,31 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// CORS configuration
+// CORS configuration for separate frontend/backend deployment
+const allowedOrigins = [
+  'http://localhost:5173', // Local development
+  'https://research-lab-website.netlify.app', // Your Netlify frontend
+  'https://*.netlify.app' // Any Netlify domain
+];
+
 app.use(cors({
-  origin: process.env.VITE_API_URL ? process.env.VITE_API_URL.replace(':5000', ':5173') : 'http://localhost:5173',
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.some(allowedOrigin => {
+      if (allowedOrigin.includes('*')) {
+        const regex = new RegExp(allowedOrigin.replace('*', '.*'));
+        return regex.test(origin);
+      }
+      return allowedOrigin === origin;
+    })) {
+      return callback(null, true);
+    }
+    
+    const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+    return callback(new Error(msg), false);
+  },
   credentials: true
 }));
 

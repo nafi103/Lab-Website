@@ -13,7 +13,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "dist/index.html"
+      "dest": "backend/server.js"
     }
   ],
   "env": {

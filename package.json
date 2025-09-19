@@ -9,8 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "server": "node backend/server.js",
-    "dev:full": "concurrently \"npm run server\" \"npm run dev\"",
-    "vercel-build": "vite build"
+    "dev:full": "concurrently \"npm run server\" \"npm run dev\""
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
