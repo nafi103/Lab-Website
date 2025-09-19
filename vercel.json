@@ -2,18 +2,18 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/index-v2.js",
+      "src": "api/serverless.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/api/index-v2.js"
+      "dest": "/api/serverless.js"
     },
     {
       "src": "/",
-      "dest": "/api/index-v2.js"
+      "dest": "/api/serverless.js"
     }
   ],
   "env": {
