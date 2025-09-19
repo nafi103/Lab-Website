@@ -76,6 +76,22 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+// Root route handler
+app.get('/', (req, res) => {
+  res.json({
+    message: 'Research Lab API Server',
+    status: 'running',
+    endpoints: {
+      test: '/api/test',
+      health: '/api/health',
+      people: '/api/people',
+      news: '/api/news',
+      publications: '/api/publications'
+    },
+    timestamp: new Date().toISOString()
+  });
+});
+
 // Catch all for API routes
 app.all('/api/*', (req, res) => {
   res.status(404).json({ error: 'API route not found' });
