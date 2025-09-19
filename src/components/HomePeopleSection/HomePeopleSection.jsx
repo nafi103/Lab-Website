@@ -35,7 +35,10 @@ const HomePeopleSection = () => {
         throw new Error('Failed to fetch people');
       }
       const data = await response.json();
-      setPeople(data);
+      
+      // Handle new response format
+      const peopleData = data.data || data; // Support both new and old format
+      setPeople(peopleData);
     } catch (error) {
       setError(error.message);
     } finally {

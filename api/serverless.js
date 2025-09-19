@@ -135,8 +135,9 @@ export default async function handler(req, res) {
       }
       
       const { category, featured, limit } = req.query;
-      let query = { status: 'published' };
+      let query = {};
       
+      // Don't filter by status for now - let's see all news items
       if (category && category !== 'all') {
         query.category = category;
       }
@@ -145,6 +146,8 @@ export default async function handler(req, res) {
         query.featured = true;
       }
       
+      console.log('News query:', query);
+      
       let newsQuery = News.find(query).sort({ publishDate: -1 });
       
       if (limit) {
@@ -152,7 +155,14 @@ export default async function handler(req, res) {
       }
       
       const news = await newsQuery.lean().exec();
-      return res.status(200).json(news);
+      console.log('News results:', news.length, 'items found');
+      
+      return res.status(200).json({
+        success: true,
+        count: news.length,
+        data: news,
+        query: query
+      });
     }
     
     // Single news item
@@ -174,14 +184,24 @@ export default async function handler(req, res) {
       }
       
       const { category, status } = req.query;
-      let query = { status: status || 'active' };
+      let query = {};
       
+      // Don't filter by status for now - let's see all people
       if (category && category !== 'all') {
         query.category = category;
       }
       
+      console.log('People query:', query);
+      
       const people = await Person.find(query).sort({ name: 1 }).lean();
-      return res.status(200).json(people);
+      console.log('People results:', people.length, 'items found');
+      
+      return res.status(200).json({
+        success: true,
+        count: people.length,
+        data: people,
+        query: query
+      });
     }
     
     // Single person
