@@ -2,8 +2,7 @@
 
 .news-page {
   width: 100%;
-  min-height: 100vh;
-  padding: 6rem 0 2rem 0;
+  padding: 6rem 0 2rem 0; /* Universal gap below navbar */
 }
 
 .news-header {

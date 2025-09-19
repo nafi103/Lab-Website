@@ -59,6 +59,22 @@ h2 {
   line-height: 1.2;
 }
 
+h3{
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, 
+    #ffffff 0%, 
+    #e3f2fd 30%, 
+    #bbdefb 60%, 
+    #64b5f6 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.2;
+}
+
 p {
   font-size: 1.1rem;
   margin-bottom: 1rem;
@@ -77,9 +93,10 @@ p {
 }
 
 .page-content {
-  padding: 0 0 2rem 0;
+  max-width: 1250px;
+  padding: 6rem 0 2rem 0; /* Universal gap below navbar */
   width: 100%;
-  text-align: center;
+  margin: 0 auto; /* Center the content */
   position: relative;
   animation: fadeInUp 0.8s ease-out forwards;
   opacity: 0;
@@ -137,7 +154,9 @@ p {
   }
   
   .page-content {
-    padding: 0 0 2rem 0; /* Remove top padding on tablets */
+    max-width: 750px;
+    padding: 5.5rem 1rem 2rem 1rem; /* Adjust padding for tablets */
+    margin: 0 auto;
   }
   
   .main-content {
@@ -168,7 +187,9 @@ p {
   }
   
   .page-content {
-    padding: 0 0 1.5rem 0; /* Remove top padding on mobile */
+    max-width: 450px;
+    padding: 5rem 0.75rem 1.5rem 0.75rem; /* Adjust padding for mobile */
+    margin: 0 auto;
   }
   
   h1 {

@@ -8,6 +8,7 @@ import dotenv from 'dotenv';
 // Import routes
 import peopleRoutes from './routes/people.js';
 import newsRoutes from './routes/news.js';
+import publicationsRoutes from './routes/publications.js';
 
 // Load environment variables
 dotenv.config();
@@ -47,6 +48,29 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/lab-websi
 // API Routes
 app.use('/api/people', peopleRoutes);
 app.use('/api/news', newsRoutes);
+app.use('/api/publications', publicationsRoutes);
+
+// Test route to verify server is working
+app.get('/api/test', (req, res) => {
+  res.json({ message: 'Server is working!' });
+});
+
+// Debug: List all routes
+app.get('/api/routes', (req, res) => {
+  const routes = [];
+  app._router.stack.forEach((middleware) => {
+    if (middleware.route) {
+      routes.push(`${Object.keys(middleware.route.methods)} ${middleware.route.path}`);
+    } else if (middleware.name === 'router') {
+      middleware.handle.stack.forEach((handler) => {
+        if (handler.route) {
+          routes.push(`${Object.keys(handler.route.methods)} ${middleware.regexp}${handler.route.path}`);
+        }
+      });
+    }
+  });
+  res.json({ routes });
+});
 
 // Start server
 app.listen(PORT, () => {

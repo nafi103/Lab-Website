@@ -42,7 +42,7 @@ const People = () => {
 
   if (error) {
     return (
-      <div className='people-page'>
+      <div className='page-content'>
         <div className="error-container">
           <h2>Oops! Something went wrong</h2>
           <p>{error}</p>
@@ -59,7 +59,7 @@ const People = () => {
   }
 
   return (
-    <div className='people-page'>
+    <div className='page-content'>
       <div className="people-header">
         <h1>Our Team</h1>
         <p className="people-subtitle">

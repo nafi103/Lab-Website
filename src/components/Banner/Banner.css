@@ -1,13 +1,11 @@
 .banner {
-  min-height: 70vh;
   display: flex;
   align-items: center;
   background: transparent;
-  margin-bottom: -2rem;
 }
 
 .banner-content {
-  max-width: 1200px;
+  max-width: 1250px;
   margin: 0 auto;
   padding: 0 2rem;
   display: grid;
