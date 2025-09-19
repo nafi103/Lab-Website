@@ -120,7 +120,7 @@ const About = () => {
             </div>
             <div className="contact-item">
               <h3>Technology Transfer</h3>
-              <p>Email: tech-transfer@university.edu<br />
+              <p>Email: transfer@university.edu<br />
                  Phone: (555) 123-4569<br />
                  For licensing and commercialization</p>
             </div>

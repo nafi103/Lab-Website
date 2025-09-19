@@ -200,7 +200,7 @@
   gap: 1.5rem;
 }
 
-.contact-item {
+.footer-contact-item {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
@@ -217,27 +217,22 @@
   min-width: 20px;
 }
 
-.contact-item div {
+.footer-contact-item div {
   flex: 1;
-  background: none;
-  border: none;
-  box-shadow: none;
-  padding: 0;
-  border-radius: 0;
 }
 
-.contact-item p {
+.footer-contact-item p {
   margin: 0 0 0.25rem 0;
   font-size: 0.9rem;
   color: var(--text-secondary, #b8b8d0);
   line-height: 1.4;
 }
 
-.contact-item p:last-child {
+.footer-contact-item p:last-child {
   margin-bottom: 0;
 }
 
-.contact-item p strong {
+.footer-contact-item p strong {
   color: var(--text-primary, #e0e0e0);
   font-weight: 600;
 }
@@ -303,7 +298,7 @@
     text-align: center;
   }
   
-  .contact-item {
+  .footer-contact-item {
     justify-content: center;
   }
   

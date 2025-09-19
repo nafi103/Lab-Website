@@ -70,14 +70,14 @@ const Footer = () => {
           <div className="footer-section">
             <h4>Contact Information</h4>
             <div className="contact-info">
-              <div className="contact-item">
+              <div className="footer-contact-item">
                 <span className="contact-icon">📍</span>
                 <div>
                   <p>Research Building, Room 301</p>
                   <p>City, State 12345</p>
                 </div>
               </div>
-              <div className="contact-item">
+              <div className="footer-contact-item">
                 <span className="contact-icon">🕒</span>
                 <div>
                   <p><strong>Office Hours:</strong></p>
