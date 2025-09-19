@@ -76,3 +76,6 @@ app.get('/api/routes', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+// Export for Vercel
+export default app;
