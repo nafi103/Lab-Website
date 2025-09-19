@@ -15,7 +15,7 @@ const People = () => {
   const fetchPeople = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:5000/api/people');
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/people`);
       
       if (!response.ok) {
         throw new Error('Failed to fetch people data');
@@ -50,8 +50,8 @@ const People = () => {
             Try Again
           </button>
           <div className="error-help">
-            <p>Make sure the server is running with:</p>
-            <code>node server.js</code>
+            <p>Unable to connect to the API server.</p>
+            <p>Please check your internet connection or try again later.</p>
           </div>
         </div>
       </div>

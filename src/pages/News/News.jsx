@@ -32,7 +32,7 @@ const News = () => {
         setLoading(true);
       }
       const response = await fetch(
-        `http://localhost:5000/api/news${selectedCategory !== 'all' ? `?category=${selectedCategory}` : ''}`
+        `${import.meta.env.VITE_API_URL}/api/news${selectedCategory !== 'all' ? `?category=${selectedCategory}` : ''}`
       );
       if (!response.ok) {
         throw new Error('Failed to fetch news');
@@ -65,7 +65,7 @@ const News = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/news/categories/all');
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/news/categories/all`);
       if (response.ok) {
         const data = await response.json();
         setCategories(['all', ...data]);
@@ -95,7 +95,7 @@ const News = () => {
           <div className="error-message">
             Error loading news: {error}
             <br />
-            <span className="error-hint">Make sure the server is running on port 5000</span>
+            <span className="error-hint">Please check your internet connection or try again later.</span>
           </div>
         </div>
       </div>

@@ -16,7 +16,7 @@ const NewsDetail = () => {
   const fetchNewsDetails = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`http://localhost:5000/api/news/${id}`);
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/news/${id}`);
       
       if (!response.ok) {
         throw new Error('News article not found');

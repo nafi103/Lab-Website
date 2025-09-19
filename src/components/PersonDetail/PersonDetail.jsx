@@ -16,7 +16,7 @@ const PersonDetail = () => {
   const fetchPersonDetails = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`http://localhost:5000/api/people/${id}`);
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/people/${id}`);
       
       if (!response.ok) {
         throw new Error('Person not found');
