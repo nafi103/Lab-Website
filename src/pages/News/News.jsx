@@ -3,33 +3,37 @@ import NewsCard from '../../components/NewsCard';
 import LoadingScreen from '../../components/LoadingScreen';
 import './News.css';
 
+// News page - showing all our lab updates and announcements
+// I wanted filtering and smooth transitions to make browsing easy
 const News = () => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [categories, setCategories] = useState([]);
-  const [isUpdating, setIsUpdating] = useState(false);
+  const [isUpdating, setIsUpdating] = useState(false); // For smooth category transitions
   const [isInitialLoad, setIsInitialLoad] = useState(true);
 
+  // Load news when component mounts or category changes
   useEffect(() => {
     if (isInitialLoad) {
       fetchNews();
       fetchCategories();
       setIsInitialLoad(false);
     } else {
-      // For category changes, show smooth transition
+      // Smooth loading animation when switching categories
       setIsUpdating(true);
       setTimeout(() => {
         fetchNews();
-      }, 150); // Small delay for smooth transition
+      }, 150); // Brief delay for visual transition
     }
   }, [selectedCategory]);
 
+  // Get news articles, optionally filtered by category
   const fetchNews = async () => {
     try {
       if (isInitialLoad) {
-        setLoading(true);
+        setLoading(true); // Full loading screen on first visit
       }
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/news${selectedCategory !== 'all' ? `?category=${selectedCategory}` : ''}`

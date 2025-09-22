@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './HomePeopleSection.css';
 
+// Home page people section - showcasing our team with a carousel effect
+// I wanted visitors to see the faces behind the research
 const HomePeopleSection = () => {
   const [people, setPeople] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -9,24 +11,27 @@ const HomePeopleSection = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
+  // Fetch people data when component mounts
   useEffect(() => {
     fetchPeople();
   }, []);
 
-  // Auto-scroll effect with simple infinite loop
+  // Auto-scroll carousel effect - keeps things dynamic
   useEffect(() => {
     if (people.length === 0) return;
 
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => {
         const nextIndex = prevIndex + 1;
+        // Loop back to start when we reach the end
         return nextIndex >= people.length ? 0 : nextIndex;
       });
-    }, 4000); // Change every 4 seconds
+    }, 4000); // Switch every 4 seconds - not too fast, not too slow
 
     return () => clearInterval(interval);
   }, [people.length]);
 
+  // Get team member data from the API
   const fetchPeople = async () => {
     try {
       setLoading(true);

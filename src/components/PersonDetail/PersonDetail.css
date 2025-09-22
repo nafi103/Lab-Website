@@ -1,6 +1,6 @@
 /* PersonDetail.css - Enhanced Glassmorphism Design */
 .person-detail {
-  padding: 6rem 0 2rem 0; /* Universal gap below navbar */
+  padding: 3rem 0 2rem 0; /* Reduced top gap below navbar */
   width: 100%;
   display: flex;
   flex-direction: column;

@@ -3,15 +3,19 @@ import PeopleCard from '../../components/PeopleCard/PeopleCard';
 import LoadingScreen from '../../components/LoadingScreen';
 import './People.css';
 
+// People page - showcasing our entire team
+// I wanted to give everyone equal spotlight and make it easy to browse
 const People = () => {
   const [people, setPeople] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Load team data when component mounts
   useEffect(() => {
     fetchPeople();
   }, []);
 
+  // Get all team members from our API
   const fetchPeople = async () => {
     try {
       setLoading(true);
@@ -31,6 +35,7 @@ const People = () => {
     }
   };
 
+  // Custom loading message for the people page
   if (loading) {
     return (
       <LoadingScreen 

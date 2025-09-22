@@ -2,17 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './PersonDetail.css';
 
+// Detailed person page - showing comprehensive info about team members
+// I wanted to give each person their own space to shine
 const PersonDetail = () => {
-  const { id } = useParams();
+  const { id } = useParams(); // Get person ID from URL
   const navigate = useNavigate();
   const [person, setPerson] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Load person data when component mounts or ID changes
   useEffect(() => {
     fetchPersonDetails();
   }, [id]);
 
+  // Get detailed information about this specific person
   const fetchPersonDetails = async () => {
     try {
       setLoading(true);
@@ -32,6 +36,7 @@ const PersonDetail = () => {
     }
   };
 
+  // Show loading state while fetching data
   if (loading) {
     return (
       <div className='page-content'>

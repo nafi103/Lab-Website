@@ -2,17 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './NewsDetail.css';
 
+// Individual news article page - showing full content and details
+// I wanted readers to have a distraction-free reading experience
 const NewsDetail = () => {
-  const { id } = useParams();
+  const { id } = useParams(); // Get article ID from URL
   const navigate = useNavigate();
   const [news, setNews] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Load article data when component mounts or ID changes
   useEffect(() => {
     fetchNewsDetails();
   }, [id]);
 
+  // Get the full article content from our API
   const fetchNewsDetails = async () => {
     try {
       setLoading(true);
@@ -32,6 +36,7 @@ const NewsDetail = () => {
     }
   };
 
+  // Format publish date for better readability
   const formatDate = (dateString) => {
     const options = { 
       year: 'numeric', 

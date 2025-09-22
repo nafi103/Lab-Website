@@ -3,16 +3,20 @@ import { useNavigate } from 'react-router-dom';
 import LoadingScreen from '../LoadingScreen';
 import './HomePublicationSection.css';
 
+// Home page publications section - showcasing our research achievements
+// I wanted to highlight our best work right on the homepage
 const HomePublicationSection = () => {
   const [publications, setPublications] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
+  // Load publications when component mounts
   useEffect(() => {
     fetchLatestPublications();
   }, []);
 
+  // Get our most important publications from the API
   const fetchLatestPublications = async () => {
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/api/publications`);
@@ -21,14 +25,14 @@ const HomePublicationSection = () => {
       }
       const data = await response.json();
       
-      // Sort publications: Highlighted first, then by year (newest to oldest)
+      // Priority sorting: highlighted papers first, then newest to oldest
       const sortedPublications = data.sort((a, b) => {
         if (a.isHighlighted && !b.isHighlighted) return -1;
         if (!a.isHighlighted && b.isHighlighted) return 1;
-        return b.year - a.year;
+        return b.year - a.year; // Most recent first
       });
       
-      // Take only the first 3 publications for home page
+      // Only show top 3 publications to keep homepage focused
       setPublications(sortedPublications.slice(0, 3));
     } catch (err) {
       setError(err.message);

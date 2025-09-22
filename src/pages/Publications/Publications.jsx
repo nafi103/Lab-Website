@@ -2,16 +2,20 @@ import React, { useState, useEffect } from 'react';
 import LoadingScreen from '../../components/LoadingScreen';
 import './Publications.css';
 
+// Publications page - showcasing our research output
+// I wanted this to feel like a proper academic portfolio
 const Publications = () => {
   const [publications, setPublications] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [expandedAbstracts, setExpandedAbstracts] = useState({});
+  const [expandedAbstracts, setExpandedAbstracts] = useState({}); // Track which abstracts are expanded
 
+  // Load publications when component mounts
   useEffect(() => {
     fetchPublications();
   }, []);
 
+  // Get all our published research from the API
   const fetchPublications = async () => {
     try {
       setLoading(true);
@@ -31,10 +35,11 @@ const Publications = () => {
     }
   };
 
+  // Toggle abstract visibility for individual publications
   const toggleAbstract = (id) => {
     setExpandedAbstracts(prev => ({
       ...prev,
-      [id]: !prev[id]
+      [id]: !prev[id] // Flip the current state
     }));
   };
 

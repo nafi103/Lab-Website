@@ -193,6 +193,18 @@
   color: var(--primary, #0ea5e9);
 }
 
+.footer-research-area {
+  font-size: 0.9rem !important;
+}
+
+.footer-research-area p {
+  color: var(--text-secondary, #b8b8d0) !important;
+  margin-bottom: 0.75rem !important;
+  transition: color 0.3s ease;
+  font-size: 0.9rem !important;
+  font-weight: normal !important;
+}
+
 /* Contact Info */
 .contact-info {
   display: flex;

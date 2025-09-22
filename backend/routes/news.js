@@ -3,22 +3,26 @@ import News from '../models/News.js';
 
 const router = express.Router();
 
-// Get all news
+// Get all news articles with optional filtering
 router.get('/', async (req, res) => {
   try {
     const { category, featured, limit } = req.query;
-    let query = {};
+    let query = {}; // Start with empty query object
     
+    // Filter by category if specified (and not 'all')
     if (category && category !== 'all') {
       query.category = category;
     }
     
+    // Show only featured articles if requested
     if (featured === 'true') {
       query.featured = true;
     }
     
+    // Build the query with sorting (newest first)
     let newsQuery = News.find(query).sort({ publishDate: -1 });
     
+    // Limit results if specified (useful for homepage)
     if (limit) {
       newsQuery = newsQuery.limit(parseInt(limit));
     }
@@ -30,7 +34,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Get single news article
+// Get individual news article by ID
 router.get('/:id', async (req, res) => {
   try {
     const news = await News.findById(req.params.id);
@@ -43,14 +47,14 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Create new news article
+// Create new news article - for adding fresh content
 router.post('/', async (req, res) => {
   try {
     const news = new News(req.body);
     const savedNews = await news.save();
-    res.status(201).json(savedNews);
+    res.status(201).json(savedNews); // 201 = Successfully created
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    res.status(400).json({ message: error.message }); // 400 = Bad request
   }
 });
 

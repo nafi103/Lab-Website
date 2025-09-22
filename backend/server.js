@@ -5,33 +5,34 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 
-// Import routes
+// Bringing in all my route handlers - keeping things organized
 import peopleRoutes from './routes/people.js';
 import newsRoutes from './routes/news.js';
 import publicationsRoutes from './routes/publications.js';
 
-// Load environment variables
+// Loading up environment variables - keeping secrets safe
 dotenv.config();
 
-// ES modules __dirname equivalent
+// This little trick helps me get __dirname in ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// CORS configuration for separate frontend/backend deployment
+// CORS setup - had to figure this out for deployment headaches!
 const allowedOrigins = [
-  'http://localhost:5173', // Local development
-  'https://research-lab-website.netlify.app', // Your Netlify frontend
-  'https://*.netlify.app' // Any Netlify domain
+  'http://localhost:5173', // My local dev environment
+  'https://research-lab-website.netlify.app', // Production frontend
+  'https://*.netlify.app' // Just in case I change the domain later
 ];
 
 app.use(cors({
   origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl requests)
+    // I allow requests with no origin for mobile apps and testing tools
     if (!origin) return callback(null, true);
     
+    // Check if the origin is in my allowed list (with wildcard support)
     if (allowedOrigins.some(allowedOrigin => {
       if (allowedOrigin.includes('*')) {
         const regex = new RegExp(allowedOrigin.replace('*', '.*'));
@@ -48,18 +49,18 @@ app.use(cors({
   credentials: true
 }));
 
-// Body parsing middleware
+// Essential middleware for parsing request bodies
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static files (for uploaded images)
+// Serving static files like images from the public folder
 app.use(express.static(path.join(__dirname, '../public')));
 
-// Connect to MongoDB
+// Connecting to MongoDB - works both locally and with Atlas
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/lab-website')
 .then(() => {
   console.log('Connected to MongoDB');
-  // Log database info
+  // I like to see what database I'm connected to
   const dbName = mongoose.connection.db.databaseName;
   const isAtlas = process.env.MONGODB_URI && process.env.MONGODB_URI.includes('mongodb+srv');
   console.log(`Database: ${dbName}`);
@@ -67,17 +68,17 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/lab-websi
 })
 .catch((error) => console.error('MongoDB connection error:', error));
 
-// API Routes
+// Setting up my API routes - keeping everything organized by resource
 app.use('/api/people', peopleRoutes);
 app.use('/api/news', newsRoutes);
 app.use('/api/publications', publicationsRoutes);
 
-// Test route to verify server is working
+// Quick health check endpoint - useful for monitoring
 app.get('/api/test', (req, res) => {
   res.json({ message: 'Server is working!' });
 });
 
-// Root route for Vercel
+// Root endpoint for Vercel deployment - shows available endpoints
 app.get('/', (req, res) => {
   res.json({
     message: 'Research Lab API Server',
@@ -91,7 +92,7 @@ app.get('/', (req, res) => {
   });
 });
 
-// Debug: List all routes
+// Debug endpoint to see all registered routes - handy during development
 app.get('/api/routes', (req, res) => {
   const routes = [];
   app._router.stack.forEach((middleware) => {
@@ -108,12 +109,12 @@ app.get('/api/routes', (req, res) => {
   res.json({ routes });
 });
 
-// Start server (only for local development)
+// Only start the server locally - Vercel handles this in production
 if (process.env.NODE_ENV !== 'production') {
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
   });
 }
 
-// Export for Vercel
+// Exporting for Vercel serverless deployment
 export default app;

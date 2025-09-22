@@ -1,16 +1,19 @@
 import React from 'react';
 import './Footer.css';
 
+// Footer component - I wanted to include useful links and contact info
+// Plus a bit of visual flair with the animated atom logo
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const currentYear = new Date().getFullYear(); // Always keep the copyright year current
 
   return (
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-content">
-          {/* Lab Info Section */}
+          {/* Lab Information and Branding */}
           <div className="footer-section">
             <div className="footer-logo">
+              {/* Custom animated atom icon - I thought it fit the scientific theme */}
               <div className="logo-icon">
                 <div className="atom">
                   <div className="nucleus"></div>
@@ -26,6 +29,7 @@ const Footer = () => {
               Our research spans multiple disciplines including machine learning, 
               quantum computing, and computational biology.
             </p>
+            {/* Social media and contact links */}
             <div className="social-links">
               <a href="https://twitter.com/researchlab" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
                 <span className="social-icon">🐦</span>
@@ -57,13 +61,13 @@ const Footer = () => {
           {/* Research Areas */}
           <div className="footer-section">
             <h4>Research Areas</h4>
-            <ul className="footer-links">
-              <li><a href="/research/machine-learning">Machine Learning</a></li>
-              <li><a href="/research/quantum-computing">Quantum Computing</a></li>
-              <li><a href="/research/computational-biology">Computational Biology</a></li>
-              <li><a href="/research/data-science">Data Science</a></li>
-              <li><a href="/research/systems-biology">Systems Biology</a></li>
-            </ul>
+            <div className="footer-research-area">
+              <p>Machine Learning</p>
+              <p>Quantum Computing</p>
+              <p>Computational Biology</p>
+              <p>Data Science</p>
+              <p>Systems Biology</p>
+            </div>
           </div>
 
           {/* Contact Info */}

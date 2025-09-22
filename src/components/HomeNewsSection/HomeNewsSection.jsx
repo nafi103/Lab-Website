@@ -2,18 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LoadingScreen from '../LoadingScreen';
 import './HomeNewsSection.css';
-import './HomeNewsSection.css';
 
+// Home page news section - keeping visitors updated with our latest happenings
+// I wanted to show the most important and recent news right on the homepage
 const HomeNewsSection = () => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
+  // Load news when component mounts
   useEffect(() => {
     fetchLatestNews();
   }, []);
 
+  // Get the latest news from our API
   const fetchLatestNews = async () => {
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/api/news`);
@@ -22,16 +25,16 @@ const HomeNewsSection = () => {
       }
       const data = await response.json();
       
-      // Sort articles: Featured first, then by date (latest to oldest)
+      // Smart sorting: featured articles first, then by recency
       const sortedNews = data.sort((a, b) => {
         if (a.featured && !b.featured) return -1;
         if (!a.featured && b.featured) return 1;
         const dateA = new Date(a.publishDate);
         const dateB = new Date(b.publishDate);
-        return dateB - dateA;
+        return dateB - dateA; // Newest first
       });
       
-      // Take only the first 4 articles for home page
+      // Only show 4 articles on homepage to keep it clean
       setNews(sortedNews.slice(0, 4));
     } catch (err) {
       setError(err.message);

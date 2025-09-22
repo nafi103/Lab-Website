@@ -9,13 +9,19 @@ import './App.css'
 import './styles/global.css'
 import './styles/background.css'
 
+// This is the main App component - basically the heart of my website
+// I'm using React Router to handle all the different pages and navigation
 function App() {
   return (
     <Router>
       <div className="App">
+        {/* Navigation stays consistent across all pages */}
         <Navbar />
         <Routes>
+          {/* Home page - where visitors first land */}
           <Route path="/" element={<Home />} />
+          
+          {/* News section - I wanted to keep users updated on lab activities */}
           <Route 
             path="/news" 
             element={
@@ -26,6 +32,8 @@ function App() {
               </main>
             } 
           />
+          
+          {/* Publications page - showcasing our research work */}
           <Route 
             path="/publications" 
             element={
@@ -36,6 +44,8 @@ function App() {
               </main>
             } 
           />
+          
+          {/* People page - meet the team behind the research */}
           <Route 
             path="/people" 
             element={
@@ -46,6 +56,9 @@ function App() {
               </main>
             } 
           />
+          
+          {/* Individual person detail page - dynamic routing with :id parameter */}
+          {/* Individual person detail page - dynamic routing with :id parameter */}
           <Route 
             path="/people/:id" 
             element={
@@ -56,6 +69,8 @@ function App() {
               </main>
             } 
           />
+          
+          {/* News detail page - for reading full news articles */}
           <Route 
             path="/news/:id" 
             element={
@@ -66,6 +81,8 @@ function App() {
               </main>
             } 
           />
+          
+          {/* About page - telling our story and mission */}
           <Route 
             path="/about" 
             element={
@@ -77,6 +94,7 @@ function App() {
             } 
           />
         </Routes>
+        {/* Footer appears on every page for consistency */}
         <Footer />
       </div>
     </Router>

@@ -3,33 +3,33 @@ import Publication from '../models/Publication.js';
 
 const router = express.Router();
 
-// GET /api/publications - Get all publications
+// GET /api/publications - Get all publications with optional filtering
 router.get('/', async (req, res) => {
   try {
     const { year, type, labMemberOnly } = req.query;
     
-    // Build query object
+    // Building a flexible query object for filtering
     let query = {};
     
-    // Filter by year if provided
+    // Filter by publication year if specified
     if (year) {
       query.year = parseInt(year);
     }
     
-    // Filter by type if provided
+    // Filter by publication type (journal, conference, etc.)
     if (type) {
       query.type = type;
     }
     
-    // Filter for publications with lab members only
+    // Show only publications with lab members as authors
     if (labMemberOnly === 'true') {
       query['authors.isLabMember'] = true;
     }
     
-    // Fetch publications sorted by year (newest first), then by creation date
+    // Get publications sorted logically: newest year first, then by when we added them
     const publications = await Publication.find(query)
       .sort({ year: -1, createdAt: -1 })
-      .lean(); // Use lean() for better performance
+      .lean(); // lean() gives us plain objects instead of Mongoose docs (faster)
     
     res.json(publications);
   } catch (error) {

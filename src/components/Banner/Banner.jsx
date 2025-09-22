@@ -1,10 +1,13 @@
 import React from 'react';
 import './Banner.css';
 
+// Main banner component - the hero section that welcomes visitors
+// I wanted something visually striking but professional
 const Banner = () => {
   return (
     <section className="banner">
       <div className="banner-content">
+        {/* Left side - main messaging */}
         <div className="banner-text">
           <h1 className="banner-title">
             Advancing Scientific Discovery
@@ -13,25 +16,29 @@ const Banner = () => {
             Pioneering research and innovation at the forefront of modern science
           </p>
         </div>
+        
+        {/* Right side - custom SVG illustration */}
         <div className="banner-visual">
           <svg
             className="banner-svg"
             viewBox="0 0 700 600"
             xmlns="http://www.w3.org/2000/svg"
           >
-            {/* Background gradient definitions */}
+            {/* SVG gradient definitions for the visual elements */}
             <defs>
-              
+              {/* Main gradient for nodes - blue tones */}
               <linearGradient id="nodeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stopColor="#0ea5e9" />
                 <stop offset="100%" stopColor="#06b6d4" />
               </linearGradient>
               
+              {/* Secondary gradient for accent elements */}
               <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stopColor="#8b5cf6" />
                 <stop offset="100%" stopColor="#0ea5e9" />
               </linearGradient>
 
+              {/* Glow effect filter to make elements pop */}
               <filter id="glow">
                 <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
                 <feMerge> 

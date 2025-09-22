@@ -1,9 +1,12 @@
 import React from 'react';
 import './About.css';
 
+// About page - telling our story and what we're all about
+// I wanted this to feel personal and inspiring, not just another academic page
 const About = () => {
   return (
     <div className="page-content">
+      {/* Hero section with lab image - first impressions matter */}
       <div className="about-hero">
         <div className="hero-content">
           <h1>About Our Research Lab</h1>
@@ -15,6 +18,7 @@ const About = () => {
       </div>
 
       <div className="about-content">
+        {/* Mission section - why we do what we do */}
         <div className="about-section">
           <h2>Our Mission</h2>
           <p>
@@ -28,6 +32,7 @@ const About = () => {
           </p>
         </div>
 
+        {/* Research areas - showcasing our expertise */}
         <div className="about-section">
           <h2>Research Areas</h2>
           <div className="research-areas">
