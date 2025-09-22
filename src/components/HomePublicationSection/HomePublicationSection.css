@@ -77,8 +77,6 @@
   text-decoration: none;
   display: inline-block;
   white-space: nowrap;
-  align-self: flex-start;
-  flex-shrink: 0;
 }
 
 .publications-grid {
@@ -280,8 +278,8 @@
 
 .view-all-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4);
-  background: linear-gradient(135deg, var(--secondary), var(--accent));
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
+  background: linear-gradient(135deg, #0284c7, #0891b2);
 }
 
 .empty-state {
